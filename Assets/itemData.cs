@@ -6,4 +6,5 @@ public class itemData : MonoBehaviour
 {
     public int itemID, requiredItemID;    
     public Transform goToPoint;
+    public GameObject[] objectsToRemove;
 }
