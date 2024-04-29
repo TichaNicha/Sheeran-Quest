@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static List<int> collectedItems = new List<int>();
     public static float moveSpeed = 3.5f, moveAccuracy = 0.15f;
     public RectTransform nameTag;
+    public GameObject nameTagObject;
 
     public Animator playerAnimator;
 
