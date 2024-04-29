@@ -49,8 +49,10 @@ public class GameManager : MonoBehaviour
         foreach(int i in collectedItems){
             if (i == 2){
                 ChangeScene(1);// lose screen
+                return;
             } else{
                 ChangeScene(2);// win screen
+                return;
             }
         }       
     }
