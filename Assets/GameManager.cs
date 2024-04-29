@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static List<int> collectedItems = new List<int>();
     public static float moveSpeed = 3.5f, moveAccuracy = 0.15f;
-    public RectTransform nameTag;
+    public RectTransform nameTag, dialogueBox;
     public GameObject nameTagObject;
 
     public Animator playerAnimator;
@@ -50,4 +50,20 @@ public class GameManager : MonoBehaviour
         // move tag
         nameTag.localPosition= new Vector2(item.nameTagSize.x/2, -0.5f);
     }
+
+    public void UpdateDialogueBox(itemData item){
+        if(item == null){
+            dialogueBox.gameObject.SetActive(false);
+            return;
+        } else{
+            dialogueBox.gameObject.SetActive(true);
+            // change name
+            dialogueBox.GetComponentInChildren<TextMeshProUGUI>().text = item.dialogueMessage;
+            // change nametag size
+            dialogueBox.sizeDelta = item.dialogueBoxSize;
+            // move tag
+            dialogueBox.parent.localPosition= new Vector2(0, 0);  
+        }
+      
+    }    
 }

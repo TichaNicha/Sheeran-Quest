@@ -9,4 +9,8 @@ public class itemData : MonoBehaviour
     public GameObject[] objectsToRemove;
     public string objectName;
     public Vector2 nameTagSize = new Vector2(2.5f, 0.5f);
+
+    [TextArea(3,3)]
+    public string dialogueMessage;
+    public Vector2 dialogueBoxSize = new Vector2(3.5f, 0.5f);
 }

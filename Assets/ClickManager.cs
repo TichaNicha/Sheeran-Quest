@@ -17,9 +17,15 @@ public class ClickManager : MonoBehaviour
 
     public void GoToItem(itemData item)
     {
-        StartCoroutine(gameManager.MoveToPoint(playerTransform, item.goToPoint.position));
-        playerWalking = true;
-        TryGettingItem(item);
+        if (item != null){
+            // update dialogue box
+            gameManager.UpdateDialogueBox(null);
+            playerWalking = true;        
+            // move player
+            StartCoroutine(gameManager.MoveToPoint(playerTransform, item.goToPoint.position));
+            // equipment stuff
+            TryGettingItem(item);
+        } 
     }
 
 
@@ -41,7 +47,9 @@ public class ClickManager : MonoBehaviour
                 Destroy(g);
             }       
             UnityEngine.Debug.Log("Item picked up");
-            gameManager.nameTagObject.SetActive(false);
+           // gameManager.nameTagObject.SetActive(false);
+        } else{
+            gameManager.UpdateDialogueBox(item);
         }
         yield return null; // do it over the course of multiple frames
     }
