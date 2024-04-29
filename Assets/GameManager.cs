@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public GameObject nameTagObject;
 
     public Animator playerAnimator;
+    public GameObject[] localScenes;
+    public int activeLocalScene;
 
     void Start()
     {
@@ -41,6 +43,22 @@ public class GameManager : MonoBehaviour
         yield return null; // do it over the course of multiple frames
     }
 
+    // player has to have picked up kat sheeran(item ID 4)
+    public void CheckWinConditions(){
+    // after picking up kat sheeran, check inventory 
+        foreach(int i in collectedItems){
+            if (i == 2){
+                ChangeScene(1);// lose screen
+            } else{
+                ChangeScene(2);// win screen
+            }
+        }       
+    }
+
+    public void ChangeScene(int sceneNumber){
+        localScenes[sceneNumber].SetActive(true);
+    }
+    
 
     public void UpdateNameTag(itemData item){
         // change name

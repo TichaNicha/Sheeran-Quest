@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class itemData : MonoBehaviour
 {
-    public int itemID, requiredItemID;    
+    public int itemID, requiredItemID;
+    public int requiredItemID2 = -1;
+
     public Transform goToPoint;
     public GameObject[] objectsToRemove;
     public string objectName;

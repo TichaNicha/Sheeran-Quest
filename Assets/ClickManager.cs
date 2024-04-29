@@ -30,7 +30,7 @@ public class ClickManager : MonoBehaviour
 
 
     private void TryGettingItem(itemData item){
-        bool canGetItem = item.requiredItemID == -1 || GameManager.collectedItems.Contains(item.requiredItemID);
+        bool canGetItem = item.requiredItemID == -1 || (GameManager.collectedItems.Contains(item.requiredItemID) || GameManager.collectedItems.Contains(item.requiredItemID2));
         if(canGetItem){
             GameManager.collectedItems.Add(item.itemID);
         }
@@ -47,7 +47,10 @@ public class ClickManager : MonoBehaviour
                 Destroy(g);
             }       
             UnityEngine.Debug.Log("Item picked up");
-           // gameManager.nameTagObject.SetActive(false);
+            if (item.itemID == 4){
+             gameManager.CheckWinConditions();
+            }
+
         } else{
             gameManager.UpdateDialogueBox(item);
         }
